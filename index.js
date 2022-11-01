@@ -1,8 +1,13 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 
+function renderLicenseBadge(license) {
+    if (license === 'MIT')
+    return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
+  }
+
 const createReadme = (github, email, project, description, license, install, tests, usage, contribute) => 
-`# ${project}
+`#${project}
 
 ## Description
 ${description}
@@ -24,6 +29,7 @@ ${usage}
 
 ## License
 ${license}
+${renderLicenseBadge(license)}
 
 ## Contributing
 ${contribute}
@@ -32,7 +38,7 @@ ${contribute}
 ${tests}
 
 ## Questions
-If you have any questions about the repo, open an issue or cotact me directly at ${email}.  You can find more of my work at ${github}.
+If you have any questions about the repo, open an issue or contact me directly at ${email}.  You can find more of my work at ${github}.
 `
 function startApp() {
 return inquirer
@@ -61,18 +67,20 @@ return inquirer
             type: 'list',
             message: 'Choose license:',
             name: 'license',
-            choices: (['MIT', 'cdla', 'marriage']),
+            choices: (['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD 3', 'none']),
         },
         {
             type: 'input',
             message: 'Project installation process:',
             name: 'install',
+            default: 'npm i',
             //npm i
         },
         {
             type: 'input',
             message: 'What command should be run to run tests:',
             name: 'tests',
+            default: 'npm run test',
             //npm test
         },
         {
