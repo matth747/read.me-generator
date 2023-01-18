@@ -1,13 +1,14 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 
+
 function renderLicenseBadge(license) {
     if (license === 'MIT')
     return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
   }
 
 const createReadme = (github, email, project, description, license, install, tests, usage, contribute) => 
-`#${project}
+`# ${project}
 
 ## Description
 ${description}
@@ -38,7 +39,7 @@ ${contribute}
 ${tests}
 
 ## Questions
-If you have any questions about the repo, open an issue or contact me directly at ${email}.  You can find more of my work at ${github}.
+If you have any questions about the repo, open an issue or contact me directly at ${email}.  You can find more of my work at github.com/${github}.
 `
 function startApp() {
 return inquirer
